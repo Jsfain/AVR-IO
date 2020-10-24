@@ -1,29 +1,35 @@
-/*************************************************************************
- * Author: Joshua Fain
- * Date:   6/23/2020
- * 
- * 
- * File:     SPI.C 
- * 
- * Requires: SPI.H     - needed for sending commands to, and receiving
- *                       responses from, SD Card.
- *           STDINT.H  - defines data types used here.
- *           AVR/IO.H  - needed for I/O related AVR variables.
- * 
- * 
- * Target: ATmega 1280
- * 
- * Description: 
- * Defines standard SPI functions declared in SPI.H that are necessary 
- * for initializing the SPI port into master mode, and sending/receiving
- * data via SPI on the target device. These are mostly the same as those
- * found in the ATmega datasheet.
- * 
- * Functions:
- * 1) void SPI_MasterInit(void)
- * 2) void SPI_MasterTransmit(char cData)
- * 3) uint8_t SPI_MasterRead()
- * **********************************************************************/
+/*
+***********************************************************************************************************************
+*                                                   AVR-GENERAL MODULE
+*
+* File    : SPI.C
+* Version : 0.0.0.1 
+* Author  : Joshua Fain
+* Target  : ATMega1280
+*
+*
+* DESCRIPTION:
+* Defines standard SPI functions declared in SPI.H that are necessary for initializing the SPI port into master mode,
+* and sending/receiving data via SPI on a target device. These are more or less the standard forms found in the ATmega
+* datasheet.
+*
+*                                                 
+*                                                       MIT LICENSE
+*
+* Copyright (c) 2020 Joshua Fain
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+* documentation files (the "Software"), to deal in the Software without restriction, including without limitation the 
+* rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to 
+* permit ersons to whom the Software is furnished to do so, subject to the following conditions: The above copyright 
+* notice and this permission notice shall be included in all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+* WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+* COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+* OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+***********************************************************************************************************************
+*/
 
 
 #include <stdint.h>
@@ -76,6 +82,8 @@ void SPI_MasterTransmit(uint8_t cData)
  * Returns:     8-bit data byte returned from the SPI device into the SPDR.
 ******************************************************************************/
 uint8_t SPI_MasterRead(void)
-{ return SPDR; }
+{ 
+  return SPDR;
+}
 
 

@@ -1,27 +1,34 @@
-/*************************************************************************
- * Author: Joshua Fain
- * Date:   6/23/2020
- * 
- * File:     USART.C 
- * 
- * Requires: USART.H   - header to declare the functions and define
- *                       directive variables used here.
- *           STDINT.H  - defines data types.
- *           AVR/IO.H  - needed for I/O related AVR variables.
- * 
- * Target: ATmega 1280
- * 
- * Description: 
- * Defines standard functions declared in USART.H used for initializing,
- * sending, and recieving data via USART0 on target device. These are 
- * mostly the same as those found in the ATmega datasheet.
- * 
- * Functions:
- * 1) void USART_Init()
- * 2) uint8_t USART_Receive()
- * 3) void USART_Transmit(uint8_t data)
- * **********************************************************************/
-
+/*
+***********************************************************************************************************************
+*                                                   AVR-GENERAL MODULE
+*
+* File    : USART.C
+* Version : 0.0.0.1 
+* Author  : Joshua Fain
+* Target  : ATMega1280
+*
+*
+* DESCRIPTION:
+* Defines standard functions declared in USART.H used for initializing, sending, and recieving data via USART0 on 
+* the target device. Most of these are essentially the definitions found in the ATmega datasheet.
+*
+*                                                 
+*                                                       MIT LICENSE
+*
+* Copyright (c) 2020 Joshua Fain
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+* documentation files (the "Software"), to deal in the Software without restriction, including without limitation the 
+* rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to 
+* permit ersons to whom the Software is furnished to do so, subject to the following conditions: The above copyright 
+* notice and this permission notice shall be included in all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+* WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+* COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+* OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+***********************************************************************************************************************
+*/
 
 #include <stdint.h>
 #include <avr/io.h>

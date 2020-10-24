@@ -18,7 +18,11 @@ Anyone.
 
 # Details
 * TARGET : ATmega1280.  These are intended to run against an ATmega1280 target, but any of these modules should be easily modifiable to run against other AVR targets.
-* LANGUAGE : C (avr-gcc/avr-libc) 
+* LANGUAGE : C (avr-gcc/avr-libc)
+
+
+# License
+[MIT](https://github.com/jsfain/avr-general/license)
 
 
 # Additional Resources

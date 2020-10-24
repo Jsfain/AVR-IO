@@ -1,7 +1,7 @@
 clear
 
 #directory to store build/compiled files
-buildDir=../untracked/obj
+buildDir=../untracked/
 
 #directory for source files
 sourceDir=source
