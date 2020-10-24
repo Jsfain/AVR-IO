@@ -22,7 +22,7 @@ Anyone.
 
 
 # License
-[MIT](https://github.com/jsfain/avr-general/license)
+[MIT](https://github.com/Jsfain/AVR-General/blob/master/LICENSE)
 
 
 # Additional Resources
