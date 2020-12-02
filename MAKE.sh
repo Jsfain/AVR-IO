@@ -1,7 +1,7 @@
 clear
 
 #directory to store build/compiled files
-buildDir=../untracked/
+buildDir=../untracked
 
 #directory for source files
 sourceDir=source
@@ -17,7 +17,7 @@ Link=(avr-gcc -Wall -g -mmcu=atmega1280 -o)
 IHex=(avr-objcopy -j .text -j .data -O ihex)
 
 
-echo -e ">> COMPILE: "${Compile[@]}" "$buildDir"/usart.o " $sourceDir"/usart.c"
+echo -e ">> COMPILE: "${Compile[@]}" "$buildDir"/usart.o "$sourceDir"/usart.c"
 "${Compile[@]}" $buildDir/usart.o $sourceDir/usart.c
 status=$?
 sleep $t
@@ -56,4 +56,18 @@ then
     exit $status
 else
     echo -e "Compiling SPI.C successful"
+fi
+
+
+echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/usart_spi_mode.o "$sourceDir"/usart_spi_mode.c"
+"${Compile[@]}" $buildDir/usart_spi_mode.o $sourceDir/usart_spi_mode.c
+status=$?
+sleep $t
+if [ $status -gt 0 ]
+then
+    echo -e "error compiling USART_SPI_MODE.C"
+    echo -e "program exiting with code $status"
+    exit $status
+else
+    echo -e "Compiling USART_SPI_MODE.C successful"
 fi
