@@ -57,17 +57,3 @@ then
 else
     echo -e "Compiling SPI.C successful"
 fi
-
-
-echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/usart_spi_mode.o "$sourceDir"/usart_spi_mode.c"
-"${Compile[@]}" $buildDir/usart_spi_mode.o $sourceDir/usart_spi_mode.c
-status=$?
-sleep $t
-if [ $status -gt 0 ]
-then
-    echo -e "error compiling USART_SPI_MODE.C"
-    echo -e "program exiting with code $status"
-    exit $status
-else
-    echo -e "Compiling USART_SPI_MODE.C successful"
-fi
