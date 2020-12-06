@@ -72,7 +72,7 @@
 
 // Chip Select 2
 #define DD_SS2      DDB5
-#define SS5         PB5
+#define SS2         PB5
 
 
 /*
