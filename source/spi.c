@@ -43,10 +43,11 @@
 */
 
 void 
-spi_master_init (void)
+spi_masterInit (void)
 {
-    // Set MOSI, SCK, and SS of SPI port as outputs. MISO is input.
-    DDR_SPI = (1 << DD_MOSI) | (1 << DD_SCK) | (1 << DD_SS0) | (1 << DD_SS1) | (1 << DD_SS2);
+    // Set MOSI, SCK, and a few SS of SPI port as outputs. MISO is input.
+    DDR_SPI =  (1 << DD_MOSI) | (1 << DD_SCK) | (1 << DD_SS0) 
+              | (1 << DD_SS1) | (1 << DD_SS2);
 
     // Make sure SS is high (not asserted) before initializing SPI.
     SPI_PORT = (1 << SS0) | (1 << SS1) | (1 << SS2);
@@ -73,7 +74,7 @@ spi_master_init (void)
 */
 
 void 
-spi_master_transmit (uint8_t byte)
+spi_masterTransmit (uint8_t byte)
 {
     SPDR = byte; //begin data transmission by loading data byte into SPDR
     while ( !(SPSR & (1 << SPIF))); //Wait for transmission complete
@@ -93,7 +94,7 @@ spi_master_transmit (uint8_t byte)
 */
 
 uint8_t 
-spi_master_read (void)
+spi_masterRead (void)
 { 
   return SPDR;
 }

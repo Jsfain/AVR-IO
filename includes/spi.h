@@ -80,7 +80,7 @@
 */
 
 void 
-spi_master_init (void);
+spi_masterInit (void);
 
 
 
@@ -95,7 +95,7 @@ spi_master_init (void);
 */
 
 void 
-spi_master_transmit (uint8_t byte);
+spi_masterTransmit (uint8_t byte);
 
 
 
@@ -111,7 +111,7 @@ spi_master_transmit (uint8_t byte);
 */
 
 uint8_t 
-spi_master_read (void);
+spi_masterRead (void);
 
 
 
