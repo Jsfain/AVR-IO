@@ -45,11 +45,10 @@ void print_dec (uint32_t num);
  * 
  * Returns     : void 
  * 
- * Notes       : The function prints the number as space-separated groups of 
- *               4-bits (nibbles). Only the number of 4-bit groups necessary to
- *               display the value will be printed to the screen.
+ * Notes       : 1) The function will only print the number of bits required.
+ *               2) A space will be print between every 4-bit group.
  * ----------------------------------------------------------------------------
-*/
+ */
 
 void print_bin (uint32_t num);
 
