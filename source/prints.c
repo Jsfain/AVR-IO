@@ -1,6 +1,6 @@
 /*
  * File    : PRINTS.C
- * Version : 0.0.0.1 
+ * Version : 0.0.0.2
  * Author  : Joshua Fain
  * Target  : ATMega1280
  * License : MIT
@@ -35,43 +35,26 @@
 
 void print_dec (uint32_t num)
 {
-  // Determine number of digits required to represent the number.
-  uint8_t len = 1;
-  
-  if (num < 10)                len = 1;
-  else if (num <  100)         len = 2;
-  else if (num <  1000)        len = 3;
-  else if (num <  10000)       len = 4;
-  else if (num <  100000)      len = 5;
-  else if (num <  1000000)     len = 6;
-  else if (num <  10000000)    len = 7;
-  else if (num <  100000000)   len = 8;
-  else if (num <  1000000000)  len = 9;
-  else if (num <= 4294967295)  len = 10;      // largest 32-bit integer value
+  char    arr[10];
+  uint8_t len = 0;
 
-  char dec[len];
-
-
-  // initialize each digit to 0.
-  for (uint8_t i = 0; i < len; i++) 
-    dec[i] = '0'; 
-  
-
-  uint32_t result = num;
-  uint8_t  remainder = 0;
-
-  for (uint8_t i = 0; i < len; i++)
+  //
+  // 1) Divide number by 10 and load its remainder into the array. 
+  // 2) Update the value of the number by dividing itself by 10. 
+  // 3) Repeat until number is 0. 
+  // Notes: - the array will be loaded in reverse order.
+  //        - the '+ 48' is to convert numbers to ascii. 
+  //
+  do
   {
-    remainder = result % 10;
-    result = result / 10;
-
-    // convert digit to ascii character
-    dec[i] = remainder + 48;
+    arr[len] = (num % 10) + 48;
+    num /= 10;
+    len++;  
   }
-  
-  // print characters in decimal array
-  for (int i = len-1; i >= 0; i--) 
-    usart_transmit (dec[i]); 
+  while (num > 0);
+
+  for (int i = len-1; i >= 0; i--)
+    usart_transmit (arr[i]);
 }
 
 
