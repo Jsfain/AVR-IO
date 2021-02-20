@@ -33,9 +33,9 @@
  */
 void print_Dec(uint32_t num)
 {
-  const uint8_t radix = 10;       // decimal radix
-  char digit[10];                 // length is max possible digits
-  int  digitCnt = 0;              // total number of digits required
+  const uint8_t radix = 10;                 // decimal radix
+  char digit[10];                           // length is max possible digits
+  int  digitCnt = 0;                        // total number of digits required
 
   //
   // 1) Load last digit (remainder) of num into array when divided by 10.
@@ -45,13 +45,16 @@ void print_Dec(uint32_t num)
   //
   for (digitCnt = 0; num > 0; digitCnt++)
   {
-    digit[digitCnt] = num % radix + 48;     // add 48 to convert to ascii
+    digit[digitCnt] = num % radix + '0';    // add 48 to convert to ascii
     num /= radix; 
   }
 
   // print digits.
-  for (--digitCnt; digitCnt >= 0; digitCnt--)
-    usart_Transmit(digit[digitCnt]);
+  if (digitCnt == 0)
+    usart_Transmit('0');
+  else
+    for (--digitCnt; digitCnt >= 0; digitCnt--)
+      usart_Transmit(digit[digitCnt]);
 }
 
 /*
@@ -70,9 +73,9 @@ void print_Dec(uint32_t num)
  */
 void print_Bin(uint32_t num)
 {
-  const uint8_t radix = 2;        // binary radix
-  char digit[32];                 // length is max possible digits
-  int  digitCnt = 0;              // total number of digits required
+  const uint8_t radix = 2;                  // binary radix
+  char digit[32];                           // length is max possible digits
+  int  digitCnt = 0;                        // total number of digits required
 
   //
   // 1) Load remainder of number into digit array when divided by 2. 
@@ -82,18 +85,21 @@ void print_Bin(uint32_t num)
   //
   for (digitCnt = 0; num > 0; digitCnt++)
   {
-    digit[digitCnt] = num % radix + 48;     // add 48 to convert to ascii
+    digit[digitCnt] = num % radix + '0';    // add 48 to convert to ascii
     num /= radix; 
   }
 
   // print digits.
-  for (--digitCnt; digitCnt >= 0; digitCnt--)
-  {
-    usart_Transmit(digit[digitCnt]);
-    // every 4 digit characters print a space
-    if (digitCnt % 4 == 0)
-      usart_Transmit(' ');
-  }
+  if (digitCnt == 0)
+    usart_Transmit('0');
+  else
+    for (--digitCnt; digitCnt >= 0; digitCnt--)
+    {
+      usart_Transmit(digit[digitCnt]);
+      // every 4 digit characters print a space
+      if (digitCnt % 4 == 0)
+        usart_Transmit(' ');
+    }
 }
 
 /*
@@ -110,9 +116,9 @@ void print_Bin(uint32_t num)
  */
 void print_Hex(uint32_t num)
 {
-  const uint8_t radix = 16;       // hex radix
-  char digit[8];                  // length is max possible digits
-  int  digitCnt = 0;              // total number of digits required
+  const uint8_t radix = 16;                 // hex radix
+  char digit[8];                            // length is max possible digits
+  int  digitCnt = 0;                        // total number of digits required
   
   //
   // 1) Load last digit (remainder) of num into array when divided by radix.
@@ -128,14 +134,17 @@ void print_Hex(uint32_t num)
 
     // convert to ascii characters
     if (digit[digitCnt] < 10)
-      digit[digitCnt] += 48;      // add 48 to convert to ascii numbers
+      digit[digitCnt] += '0';               // convert to ascii numbers
     else
-      digit[digitCnt] += 55;      // convert 10 to 15 to ascii A to F
+      digit[digitCnt] += 'A' - 10;          // convert ascii A to F. Offset 10
   }
 
   // print digits.
-  for (--digitCnt; digitCnt >= 0; digitCnt--)
-    usart_Transmit(digit[digitCnt]);
+  if (digitCnt == 0)
+    usart_Transmit('0');
+  else
+    for (--digitCnt; digitCnt >= 0; digitCnt--)
+      usart_Transmit(digit[digitCnt]);
 }    
 
 /*

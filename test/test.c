@@ -57,5 +57,13 @@ int main(void)
   print_Str(" = 0x");
   print_Hex(val);
 
+  val = 0;
+  print_Str("\n\r");
+  print_Dec(val);
+  print_Str(" = ");
+  print_Bin(val);
+  print_Str(" = 0x");
+  print_Hex(val);
+
   return 0;
 }
