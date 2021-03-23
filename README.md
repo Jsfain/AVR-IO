@@ -26,7 +26,7 @@ Anyone.
 
 
 ## License
-[MIT](https://github.com/Jsfain/AVR-General/blob/master/LICENSE)
+[GNU GPLv3](https://github.com/Jsfain/AVR-General/blob/master/LICENSE)
 
 
 ## Additional Resources

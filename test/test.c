@@ -2,8 +2,8 @@
  * File    : TEST.C
  * Author  : Joshua Fain
  * Target  : ATMega1280
- * License : MIT
- * Copyright (c) 2020
+ * License : GNU GPLv3
+ * Copyright (c) 2020, 2021
  * 
  * Program to test functions in the AVR-General source files.
  */

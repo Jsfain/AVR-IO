@@ -1,10 +1,10 @@
 /*
  * File    : PRINTS.C
- * Version : 0.0.0.2
+ * Version : 2.0
  * Author  : Joshua Fain
  * Target  : ATMega1280
- * License : MIT
- * Copyright (c) 2020
+ * License : GNU GPLv3
+ * Copyright (c) 2020, 2021
  * 
  * Implementation of PRINTS.H
  */
