@@ -17,7 +17,7 @@
 
 //
 // Initializes the USART and SPI and calls the different PRINTS functions
-// available, multiple times with various input paramters to print. 
+// available, multiple times, with various input paramters to print. 
 //
 int main(void)
 {
