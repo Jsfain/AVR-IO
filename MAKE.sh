@@ -1,6 +1,9 @@
 clear
 
 #directory to store build/compiled files
+testFile=adc_test.c
+
+#directory to store build/compiled files
 buildDir=../untracked/build
 
 #directory for source files
@@ -20,17 +23,17 @@ Link=(avr-gcc -Wall -g -mmcu=atmega1280 -o)
 IHex=(avr-objcopy -j .text -j .data -O ihex)
 
 
-echo -e ">> COMPILE: "${Compile[@]}" "$buildDir"/test.o " $testDir"/test.c"
-"${Compile[@]}" $buildDir/test.o $testDir/test.c
+echo -e ">> COMPILE: "${Compile[@]}" "$buildDir"/test.o " $testDir"/"$testFile
+"${Compile[@]}" $buildDir/test.o $testDir/$testFile
 status=$?
 sleep $t
 if [ $status -gt 0 ]
 then
-    echo -e "error compiling TEST.C"
+    echo -e "error compiling" $testFile
     echo -e "program exiting with code $status"
     exit $status
 else
-    echo -e "Compiling TEST.C successful"
+    echo -e "Compiling" $testFile "successful"
 fi
 
 
@@ -40,11 +43,11 @@ status=$?
 sleep $t
 if [ $status -gt 0 ]
 then
-    echo -e "error compiling USART0.C"
+    echo -e "error compiling usart0.c"
     echo -e "program exiting with code $status"
     exit $status
 else
-    echo -e "Compiling USART0.C successful"
+    echo -e "Compiling usart0.c successful"
 fi
 
 
@@ -54,11 +57,11 @@ status=$?
 sleep $t
 if [ $status -gt 0 ]
 then
-    echo -e "error compiling PRINTS.C"
+    echo -e "error compiling prints.c"
     echo -e "program exiting with code $status"
     exit $status
 else
-    echo -e "Compiling PRINTS.C successful"
+    echo -e "Compiling prints.c successful"
 fi
 
 
@@ -68,16 +71,29 @@ status=$?
 sleep $t
 if [ $status -gt 0 ]
 then
-    echo -e "error compiling SPI.C"
+    echo -e "error compiling spi.c"
     echo -e "program exiting with code $status"
     exit $status
 else
-    echo -e "Compiling SPI.C successful"
+    echo -e "Compiling spi.c successful"
+fi
+
+echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/adc.o "$sourceDir"/adc.c"
+"${Compile[@]}" $buildDir/adc.o $sourceDir/adc.c
+status=$?
+sleep $t
+if [ $status -gt 0 ]
+then
+    echo -e "error compiling adc.c"
+    echo -e "program exiting with code $status"
+    exit $status
+else
+    echo -e "Compiling adc.c successful"
 fi
 
 
-echo -e "\n\r>> LINK: "${Link[@]}" "$buildDir"/test.elf "$buildDir"/test.o  "$buildDir"/spi.o "$buildDir"/usart0.o "$buildDir"/prints.o"
-"${Link[@]}" $buildDir/test.elf $buildDir/test.o $buildDir/spi.o $buildDir/usart0.o $buildDir/prints.o
+echo -e "\n\r>> LINK: "${Link[@]}" "$buildDir"/test.elf "$buildDir"/test.o  "$buildDir"/spi.o "$buildDir"/usart0.o "$buildDir"/prints.o "buildDir"/adc.o"
+"${Link[@]}" $buildDir/test.elf $buildDir/test.o $buildDir/spi.o $buildDir/usart0.o $buildDir/prints.o $buildDir/adc.o
 status=$?
 sleep $t
 if [ $status -gt 0 ]
@@ -86,7 +102,7 @@ then
     echo -e "program exiting with code $status"
     exit $status
 else
-    echo -e "Linking successful. Output in TEST.ELF"
+    echo -e "Linking successful. Output in test.elf"
 fi
 
 
@@ -100,14 +116,14 @@ then
     echo -e "program exiting with code $status"
     exit $status
 else
-    echo -e "HEX file successfully generated. Output in TEST.HEX"
+    echo -e "HEX file successfully generated. Output in test.hex"
 fi
 
 
 
 echo -e "\n\r>> DOWNLOAD HEX FILE TO AVR"
-echo "avrdude -p atmega1280 -c dragon_jtag -U flash:w:test.hex:i -P usb"
-avrdude -p atmega1280 -c dragon_jtag -U flash:w:$buildDir/test.hex:i -P usb
+echo "avrdude -p atmega1280 -c dragon_isp -U flash:w:test.hex:i -P usb"
+avrdude -p atmega1280 -c dragon_isp -U flash:w:$buildDir/test.hex:i -P usb
 status=$?
 sleep $t
 if [ $status -gt 0 ]

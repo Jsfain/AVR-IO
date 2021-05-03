@@ -10,6 +10,7 @@ This repository is intended for some general AVR-specific functions and capabili
 1) SPI.C / SPI.H : Source/header for interacting with the SPI port of an AVR microcontroller.
 2) USART.C / USART.H : Source/header for interacting with USART port of an AVR microcontroller.   
 3) PRINTS.C / PRINTS.H : Source/header for printing integers (decimal, hex, binary) and strings to screen via an AVR microcontrollers USART.
+4) ADC.C / ADC.H : Source/header for the analog to digital converter of an AVR microcontroller.
 
 
 ## Technology Details
