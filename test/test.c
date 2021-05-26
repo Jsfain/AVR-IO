@@ -14,8 +14,6 @@
 #include <avr/io.h>
 #include "usart0.h"
 #include "prints.h"
-#include "spi.h"
-
 
 //
 // Initializes the USART and SPI and calls the different PRINTS functions
@@ -24,7 +22,7 @@
 int main(void)
 {
   usart_Init();
-  spi_MasterInit();
+  // spi_MasterInit();
 
   uint32_t val = 35;
   print_Str("\n\n\rStarting Test");

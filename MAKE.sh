@@ -1,7 +1,7 @@
 clear
 
 #directory to store build/compiled files
-testFile=adc_test.c
+testFile=test.c
 
 #directory to store build/compiled files
 buildDir=../untracked/build
@@ -122,8 +122,8 @@ fi
 
 
 echo -e "\n\r>> DOWNLOAD HEX FILE TO AVR"
-echo "avrdude -p atmega1280 -c dragon_isp -U flash:w:test.hex:i -P usb"
-avrdude -p atmega1280 -c dragon_isp -U flash:w:$buildDir/test.hex:i -P usb
+echo "avrdude -p atmega1280 -c dragon_jtag -U flash:w:test.hex:i -P usb"
+avrdude -p atmega1280 -c dragon_jtag -U flash:w:$buildDir/test.hex:i -P usb
 status=$?
 sleep $t
 if [ $status -gt 0 ]

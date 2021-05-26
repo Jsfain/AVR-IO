@@ -24,8 +24,8 @@
 #define F_CPU       16000000UL              // default target clock frequency
 #endif //F_CPU
 
-#define BAUD        9600                    // decimal baud rate
-#define UBRR_VALUE  ((F_CPU/16/BAUD) - 1)   // calculate value for UBRR
+#define BAUD        9600U                        // decimal baud rate
+#define UBRR_VALUE  ((F_CPU) / 16 / (BAUD) - 1)  // calculate value for UBRR
 
 /*
  *******************************************************************************

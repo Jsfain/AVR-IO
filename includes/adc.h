@@ -24,6 +24,6 @@
 #define MAX_DEC_DIG 8             // max number of decimal digits to display
 
 void adc_Init();
-void ADC_toFloat(uint16_t val);
+void ADC_toFloat(uint16_t val);   
 
 #endif // ADC_H

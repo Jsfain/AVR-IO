@@ -1,5 +1,5 @@
 /*
- * File       : TEST.C
+ * File       : ADC_TEST.C
  * Target     : ATMega1280
  * Compiler   : AVR-GCC 9.3.0
  * Downloader : AVRDUDE 6.3
