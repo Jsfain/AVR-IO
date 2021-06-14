@@ -26,8 +26,6 @@
  * Description : Initializes USART0 of the ATMega target device.
  * 
  * Arguments   : void 
- * 
- * Returns     : void
  * ----------------------------------------------------------------------------
  */
 void usart_Init(void)
@@ -47,13 +45,13 @@ void usart_Init(void)
  * ----------------------------------------------------------------------------
  *                                                           USART RECEIVE BYTE
  *                                         
- * Description : Receives a byte using the USART0 on the ATmega target device.
+ * Description : Receives a byte using the USART on the ATmega target device.
  * 
  * Arguments   : void
  * 
- * Returns     : byte received by the USART0, i.e. value in UDR0.
+ * Returns     : byte received by the USART, i.e. value in UDR0.
  * ----------------------------------------------------------------------------
-*/
+ */
 uint8_t usart_Receive(void)
 {
   // poll the RX complete flag, until it is set
@@ -68,11 +66,9 @@ uint8_t usart_Receive(void)
  * ----------------------------------------------------------------------------
  *                                                          USART TRANSMIT BYTE
  *                                       
- * Description : Sends a byte to another device via the USART0.
+ * Description : Sends a byte to another device via the USART.
  * 
- * Arguments   : data     byte to sent via USART0.
- * 
- * Returns     : void
+ * Arguments   : data   - byte to sent via USART.
  * ----------------------------------------------------------------------------
  */
 void usart_Transmit(uint8_t data)
