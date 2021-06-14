@@ -10,8 +10,8 @@
  * the ATMega microcontroller.
  */
 
-#ifndef USART_H
-#define USART_H
+#ifndef AVR_USART_H
+#define AVR_USART_H
 
 /*
  ******************************************************************************
@@ -69,4 +69,4 @@ uint8_t usart_Receive(void);
  */
 void usart_Transmit(uint8_t data);
 
-#endif //USART_H
+#endif //AVR_USART_H
