@@ -23,31 +23,17 @@ Link=(avr-gcc -Wall -g -mmcu=atmega1280 -o)
 IHex=(avr-objcopy -j .text -j .data -O ihex)
 
 
-echo -e ">> COMPILE: "${Compile[@]}" "$buildDir"/test.o " $testDir"/"$testFile
-"${Compile[@]}" $buildDir/test.o $testDir/$testFile
+echo -e ">> COMPILE: "${Compile[@]}" "$buildDir"/avr_usart.o "$sourceDir"/avr_usart.c"
+"${Compile[@]}" $buildDir/avr_usart.o $sourceDir/avr_usart.c
 status=$?
 sleep $t
 if [ $status -gt 0 ]
 then
-    echo -e "error compiling" $testFile
+    echo -e "error compiling avr_usart.c"
     echo -e "program exiting with code $status"
     exit $status
 else
-    echo -e "Compiling" $testFile "successful"
-fi
-
-
-echo -e ">> COMPILE: "${Compile[@]}" "$buildDir"/usart0.o "$sourceDir"/usart0.c"
-"${Compile[@]}" $buildDir/usart0.o $sourceDir/usart0.c
-status=$?
-sleep $t
-if [ $status -gt 0 ]
-then
-    echo -e "error compiling usart0.c"
-    echo -e "program exiting with code $status"
-    exit $status
-else
-    echo -e "Compiling usart0.c successful"
+    echo -e "Compiling avr_usart.c successful"
 fi
 
 
@@ -65,17 +51,17 @@ else
 fi
 
 
-echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/spi.o "$sourceDir"/spi.c"
-"${Compile[@]}" $buildDir/spi.o $sourceDir/spi.c
+echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/avr_spi.o "$sourceDir"/avr_spi.c"
+"${Compile[@]}" $buildDir/avr_spi.o $sourceDir/avr_spi.c
 status=$?
 sleep $t
 if [ $status -gt 0 ]
 then
-    echo -e "error compiling spi.c"
+    echo -e "error compiling avr_spi.c"
     echo -e "program exiting with code $status"
     exit $status
 else
-    echo -e "Compiling spi.c successful"
+    echo -e "Compiling avr_spi.c successful"
 fi
 
 echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/adc.o "$sourceDir"/adc.c"
@@ -91,9 +77,22 @@ else
     echo -e "Compiling adc.c successful"
 fi
 
+echo -e ">> COMPILE: "${Compile[@]}" "$buildDir"/test.o " $testDir"/"$testFile
+"${Compile[@]}" $buildDir/test.o $testDir/$testFile
+status=$?
+sleep $t
+if [ $status -gt 0 ]
+then
+    echo -e "error compiling" $testFile
+    echo -e "program exiting with code $status"
+    exit $status
+else
+    echo -e "Compiling" $testFile "successful"
+fi
 
-echo -e "\n\r>> LINK: "${Link[@]}" "$buildDir"/test.elf "$buildDir"/test.o  "$buildDir"/spi.o "$buildDir"/usart0.o "$buildDir"/prints.o "buildDir"/adc.o"
-"${Link[@]}" $buildDir/test.elf $buildDir/test.o $buildDir/spi.o $buildDir/usart0.o $buildDir/prints.o $buildDir/adc.o
+
+echo -e "\n\r>> LINK: "${Link[@]}" "$buildDir"/test.elf "$buildDir"/test.o  "$buildDir"/avr_spi.o "$buildDir"/avr_usart.o "$buildDir"/prints.o "buildDir"/adc.o"
+"${Link[@]}" $buildDir/test.elf $buildDir/test.o $buildDir/avr_spi.o $buildDir/avr_usart.o $buildDir/prints.o $buildDir/adc.o
 status=$?
 sleep $t
 if [ $status -gt 0 ]

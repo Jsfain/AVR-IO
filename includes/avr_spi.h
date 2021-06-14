@@ -1,18 +1,19 @@
 /*
  * File       : SPI.H
  * Version    : 1.0 
- * Target     : ATMega1280
- * Compiler   : AVR-GCC 9.3.0
- * Downloader : AVRDUDE 6.3
+ * Target     : Default - ATMega1280
  * License    : GNU GPLv3
  * Author     : Joshua Fain
  * Copyright (c) 2020, 2021
  * 
- * Interface for interacting with the ATMega's SPI port.
+ * SPI.H provides the interface or accessing and controlling the ATMega 
+ * microcontroller's SPI port.
  */
 
 #ifndef SPI_H
 #define SPI_H
+
+#include <avr/io.h>
 
 /*
  ******************************************************************************

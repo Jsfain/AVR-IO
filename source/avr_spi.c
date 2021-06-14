@@ -1,18 +1,17 @@
 /*
  * File       : SPI.C
  * Version    : 1.0 
- * Target     : ATMega1280
- * Compiler   : AVR-GCC 9.3.0
- * Downloader : AVRDUDE 6.3
+ * Target     : Default - ATMega1280
  * License    : GNU GPLv3
  * Author     : Joshua Fain
  * Copyright (c) 2020, 2021
  * 
- * Implementation of SPI.H
+ * SPI.C defines the functions for accessing and controlling the ATMega 
+ * microcontroller's SPI port.
  */
 
 #include <avr/io.h>
-#include "spi.h"
+#include "avr_spi.h"
 
 /*
  ******************************************************************************

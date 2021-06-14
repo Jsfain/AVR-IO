@@ -7,14 +7,15 @@ This repository is intended for some general AVR-specific functions and capabili
 
 
 ### Currently Included
-1) SPI.C / SPI.H : Source/header for interacting with the SPI port of an AVR microcontroller.
-2) USART.C / USART.H : Source/header for interacting with USART port of an AVR microcontroller.   
-3) PRINTS.C / PRINTS.H : Source/header for printing integers (decimal, hex, binary) and strings to screen via an AVR microcontrollers USART.
-4) ADC.C / ADC.H : Source/header for the analog to digital converter of an AVR microcontroller.
+1) AVR_SPI.C / AVR_SPI.H : Source/header for interacting with the SPI port of an AVR microcontroller.
+2) AVR_USART.C / AVR_USART.H : Source/header for interacting with USART port of an AVR microcontroller.   
+3) ADC.C / ADC.H : Source/header for interacting with the analog-to-digital converter of an AVR microcontroller.
 
+### Other
+1) PRINTS.C / PRINTS.H : Source/header for printing unsigned integers (decimal, hex, binary) and strings. This is platform independent and only interacts with an AVR microcontroller through the usart port via AVR_USART.C(H). This could easily be implemented on another platform's usart so long as the **usart_Transmit** and **usart_Receive** functions are implemented and included.   
 
 ## Technology Details
-* TARGET     : ATmega1280, but portable to other AVR targets with PORT reassignments, provided sufficient resources available.  
+* TARGET     : Default is ATmega1280, but portable to other AVR targets with correct PORT definition reassignments.  
 * LANGUAGE   : C
 * COMPILER   : AVR-GCC 9.3.0
 * DOWNLOADER : AVRDUDE 6.3

@@ -13,7 +13,7 @@
 #include <stdint.h>
 #include <avr/io.h>
 #include <util/delay.h>
-#include "usart0.h"
+#include "avr_usart.h"
 #include "prints.h"
 #include "adc.h"
 

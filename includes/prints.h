@@ -1,15 +1,13 @@
 /*
  * File       : PRINTS.H
- * Version    : 2.0
- * Target     : ATMega1280
- * Compiler   : AVR-GCC 9.3.0
- * Downloader : AVRDUDE 6.3
+ * Version    : 3.0
  * License    : GNU GPLv3
  * Author     : Joshua Fain
  * Copyright (c) 2020, 2021
  * 
- * Interface for some print functions used to print strings and unsigned
- * integers in decimal, binary, and hex formats.
+ * PRINTS.H provides an interface for some print functions used to print 
+ * strings and unsigned integers. The unsigned integers can be printed in 
+ * decimal, binary, and hex formats.
  */
 
 #ifndef PRINTS_H

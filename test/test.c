@@ -12,7 +12,7 @@
 
 #include <stdint.h>
 #include <avr/io.h>
-#include "usart0.h"
+#include "avr_usart.h"
 #include "prints.h"
 
 //

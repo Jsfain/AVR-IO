@@ -11,7 +11,7 @@
  */
 
 #include <avr/io.h>
-#include "usart0.h"
+#include "avr_usart.h"
 #include "prints.h"
 
 #define OC3C PE5
