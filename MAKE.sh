@@ -9,6 +9,9 @@ buildDir=../untracked/build
 #directory for source files
 sourceDir=source
 
+#directory for source files
+hlprDir=source/hlprs
+
 #directory for test files
 testDir=test
 
@@ -18,7 +21,7 @@ mkdir -p -v $buildDir
 
 t=0.25
 # -g = debug, -Os = Optimize Size
-Compile=(avr-gcc -Wall -g -Os -I "includes/" -DF_CPU=16000000 -mmcu=atmega1280 -c -o)
+Compile=(avr-gcc -Wall -g -Os -I "includes/" -I "includes/hlprs" -DF_CPU=16000000 -mmcu=atmega1280 -c -o)
 Link=(avr-gcc -Wall -g -mmcu=atmega1280 -o)
 IHex=(avr-objcopy -j .text -j .data -O ihex)
 
@@ -35,21 +38,6 @@ then
 else
     echo -e "Compiling avr_usart.c successful"
 fi
-
-
-echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/prints.o "$sourceDir"/prints.c"
-"${Compile[@]}" $buildDir/prints.o $sourceDir/prints.c
-status=$?
-sleep $t
-if [ $status -gt 0 ]
-then
-    echo -e "error compiling prints.c"
-    echo -e "program exiting with code $status"
-    exit $status
-else
-    echo -e "Compiling prints.c successful"
-fi
-
 
 echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/avr_spi.o "$sourceDir"/avr_spi.c"
 "${Compile[@]}" $buildDir/avr_spi.o $sourceDir/avr_spi.c
@@ -75,6 +63,19 @@ then
     exit $status
 else
     echo -e "Compiling adc.c successful"
+fi
+
+echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/prints.o "$hlprDir"/prints.c"
+"${Compile[@]}" $buildDir/prints.o $hlprDir/prints.c
+status=$?
+sleep $t
+if [ $status -gt 0 ]
+then
+    echo -e "error compiling prints.c"
+    echo -e "program exiting with code $status"
+    exit $status
+else
+    echo -e "Compiling prints.c successful"
 fi
 
 echo -e ">> COMPILE: "${Compile[@]}" "$buildDir"/test.o " $testDir"/"$testFile
