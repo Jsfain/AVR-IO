@@ -10,7 +10,7 @@ This repository is used to hold some AVR-specific I/O source and header files us
 3. **AVR_ADC.C(H)** - For using an analog-to-digital converter on an AVR microcontroller.
 
 ## Additional files in repo
-1. **PRINTS.C(H)** - Source/Header for printing unsigned integers (decimal, hex, binary) and strings. This is platform independent, and included here only for testing purposes. In the current configuration, it interacts with an AVR microcontroller through the USART port via AVR_USART.C(H). These files are maintained in the [C-helpers repo](https://github.com/Jsfain/C-Helpers).   
+1. **PRINTS.C(H)** - For printing unsigned integers (decimal, hex, binary) and strings. This is platform independent, and included here only for testing the AVR-IO files in this repo. In the configuration here, it interacts with an AVR microcontroller through the USART port via AVR_USART.C(H). These files are maintained in the [C-helpers repo](https://github.com/Jsfain/C-Helpers).   
 
 ## Technology Details
 Below are the technology details used in these projects. The I/O capabilites should be easily portable to other AVR targets with similar features/capabilties once proper port reassignments have been completed, appropriate to the microcontroller being used.
