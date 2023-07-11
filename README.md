@@ -5,12 +5,12 @@ Repository for general AVR modules
 This repository is intended for some general AVR-specific functions and capabilities.
 
 
-### Currently Included
+## AVR-IO Source/Header Files
 1. **AVR_SPI.C(H)** - Source/Header for interacting with the SPI port of an AVR microcontroller.
 2. **AVR_USART.C(H)** - Source/Header for interacting with USART port of an AVR microcontroller.   
 3. **AVR_ADC.C(H)** - Source/Header for interacting with the analog-to-digital converter of an AVR microcontroller.
 
-### Additional files in repo
+## Additional files in repo
 1. **PRINTS.C(H)** Source/Header for printing unsigned integers (decimal, hex, binary) and strings. This is platform independent and here only interacts with an AVR microcontroller through the usart port via AVR_USART.C(H). This is maintained in the [C-helpers repo](https://github.com/Jsfain/C-Helpers).   
 
 ## Technology Details
