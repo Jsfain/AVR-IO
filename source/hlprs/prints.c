@@ -6,7 +6,7 @@
  * Copyright (c) 2020 - 2023
  * 
  * Description: Implements PRINTS.H. These functions can be used to print 
- * unsigned integers (decimal, binary, hex) and strings. 
+ *              unsigned integers (decimal, binary, hex) and strings. 
  * 
  * NOTE 
  * Each of the print functions calls the static transmit function 
