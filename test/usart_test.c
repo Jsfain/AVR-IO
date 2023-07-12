@@ -3,7 +3,7 @@
  * Target     : ATMega1280
  * License    : GNU GPLv3
  * Author     : Joshua Fain
- * Copyright (c) 2020, 2021
+ * Copyright (c) 2020 - 2023
  * 
  * Program to test USART.C(H).
  */

@@ -14,7 +14,6 @@
  * an appropriate I/O transmit function (e.g. USART). This I/O transmit 
  * function must be defined by the user elsewhere and included here. It will 
  * only need to be called here from within the static transmit function.
- *
  */
 
 #include <stdint.h>
