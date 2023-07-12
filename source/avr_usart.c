@@ -1,13 +1,13 @@
 /*
- * File       : USART.C
+ * File       : AVR_USART.C
  * Version    : 1.0 
  * Target     : Default - ATMega1280
  * License    : GNU GPLv3
  * Author     : Joshua Fain
- * Copyright (c) 2020, 2021
+ * Copyright (c) 2020 - 2023
  * 
- * AVR_USART.C defines the functions for accessing and controlling a USART on 
- * the ATMega microcontroller. This is the implementation of AVR_USART.H
+ * Description:  Implements AVR_USART.H for accessing and controlling a USART 
+ *               on an AVR microcontroller.
  */
 
 #include <avr/io.h>
@@ -23,18 +23,18 @@
  * ----------------------------------------------------------------------------
  *                                                             INITIALIZE USART
  *                                        
- * Description : Initializes USART0 of the ATMega target device.
+ * Description : Initialize USART on the target device.
  * 
  * Arguments   : void 
  * ----------------------------------------------------------------------------
  */
 void usart_Init(void)
 {
-  // Set baud rate
+  // Set baud rate. See value of BAUD in the header file. 
   UBRR0H = (uint8_t)(UBRR_VALUE >> 8);
   UBRR0L = (uint8_t)UBRR_VALUE;
 
-  // Enable USART0 receiver and transmitter
+  // Enable USARTs receiver and transmitter
   UCSR0B = 1 << RXEN0 | 1 << TXEN0;
   
   // Set USART - Asynch mode, no parity, data frame = 8 data, 1 stop
@@ -43,13 +43,13 @@ void usart_Init(void)
 
 /*
  * ----------------------------------------------------------------------------
- *                                                           USART RECEIVE BYTE
+ *                                                                USART RECEIVE
  *                                         
- * Description : Receives a byte using the USART on the ATmega target device.
+ * Description : Receive a character via USART on the target device.
  * 
  * Arguments   : void
  * 
- * Returns     : byte received by the USART, i.e. value in UDR0.
+ * Returns     : character received by the USART, i.e. value in UDR0.
  * ----------------------------------------------------------------------------
  */
 uint8_t usart_Receive(void)
@@ -64,11 +64,11 @@ uint8_t usart_Receive(void)
 
 /*
  * ----------------------------------------------------------------------------
- *                                                          USART TRANSMIT BYTE
+ *                                                               USART TRANSMIT
  *                                       
- * Description : Sends a byte to another device via the USART.
+ * Description : Sends a character to another device via USART.
  * 
- * Arguments   : data   - byte to sent via USART.
+ * Arguments   : data - data to send via USART.
  * ----------------------------------------------------------------------------
  */
 void usart_Transmit(uint8_t data)
@@ -77,6 +77,6 @@ void usart_Transmit(uint8_t data)
   while( !(UCSR0A & 1 << UDRE0))
     ;
   
-  // load data into usart buffer which will transmit it.
+  // load data into usart buffer to transmit itwhich will transmit it.
   UDR0 = data;
 }

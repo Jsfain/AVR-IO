@@ -4,10 +4,10 @@
  * Target     : Default - ATMega1280
  * License    : GNU GPLv3
  * Author     : Joshua Fain
- * Copyright (c) 2020, 2021
+ * Copyright (c) 2020 - 2023
  * 
- * AVR_USART.H provides an interface for accessing and controlling a USART on 
- * the ATMega microcontroller.
+ * Description: Interface for accessing and controlling an USART on an AVR 
+ *              microcontroller.
  */
 
 #ifndef AVR_USART_H
@@ -36,7 +36,7 @@
  * ----------------------------------------------------------------------------
  *                                                             INITIALIZE USART
  *                                        
- * Description : Initializes USART0 of the ATMega target device.
+ * Description : Initialize USART on the target device.
  * 
  * Arguments   : void 
  * ----------------------------------------------------------------------------
@@ -46,13 +46,13 @@ void usart_Init(void);
 
 /*
  * ----------------------------------------------------------------------------
- *                                                           USART RECEIVE BYTE
+ *                                                                USART RECEIVE
  *                                         
- * Description : Receives a byte using the USART on the ATmega target device.
+ * Description : Receive a character via USART on the target device.
  * 
  * Arguments   : void
  * 
- * Returns     : byte received by the USART, i.e. value in UDR0.
+ * Returns     : character received by the USART, i.e. value in UDR0.
  * ----------------------------------------------------------------------------
  */
 uint8_t usart_Receive(void);
@@ -60,11 +60,11 @@ uint8_t usart_Receive(void);
 
 /*
  * ----------------------------------------------------------------------------
- *                                                          USART TRANSMIT BYTE
+ *                                                               USART TRANSMIT
  *                                       
- * Description : Sends a byte to another device via the USART.
+ * Description : Sends a character to another device via USART.
  * 
- * Arguments   : data   - byte to sent via USART.
+ * Arguments   : data - data to send via USART.
  * ----------------------------------------------------------------------------
  */
 void usart_Transmit(uint8_t data);
