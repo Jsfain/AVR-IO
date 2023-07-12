@@ -1,7 +1,7 @@
 clear
 
 #directory to store build/compiled files
-testFile=test.c
+testFile=usart_test.c
 
 #directory to store build/compiled files
 buildDir=../untracked/build
@@ -52,19 +52,6 @@ else
     echo -e "Compiling avr_spi.c successful"
 fi
 
-echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/adc.o "$sourceDir"/adc.c"
-"${Compile[@]}" $buildDir/adc.o $sourceDir/adc.c
-status=$?
-sleep $t
-if [ $status -gt 0 ]
-then
-    echo -e "error compiling adc.c"
-    echo -e "program exiting with code $status"
-    exit $status
-else
-    echo -e "Compiling adc.c successful"
-fi
-
 echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/prints.o "$hlprDir"/prints.c"
 "${Compile[@]}" $buildDir/prints.o $hlprDir/prints.c
 status=$?
@@ -78,7 +65,7 @@ else
     echo -e "Compiling prints.c successful"
 fi
 
-echo -e ">> COMPILE: "${Compile[@]}" "$buildDir"/test.o " $testDir"/"$testFile
+echo -e "\n\r>> COMPILE: "${Compile[@]}" "$buildDir"/test.o " $testDir"/"$testFile
 "${Compile[@]}" $buildDir/test.o $testDir/$testFile
 status=$?
 sleep $t
@@ -91,9 +78,8 @@ else
     echo -e "Compiling" $testFile "successful"
 fi
 
-
-echo -e "\n\r>> LINK: "${Link[@]}" "$buildDir"/test.elf "$buildDir"/test.o  "$buildDir"/avr_spi.o "$buildDir"/avr_usart.o "$buildDir"/prints.o "buildDir"/adc.o"
-"${Link[@]}" $buildDir/test.elf $buildDir/test.o $buildDir/avr_spi.o $buildDir/avr_usart.o $buildDir/prints.o $buildDir/adc.o
+echo -e "\n\r>> LINK: "${Link[@]}" "$buildDir"/test.elf "$buildDir"/test.o  "$buildDir"/avr_spi.o "$buildDir"/avr_usart.o "$buildDir"/prints.o "
+"${Link[@]}" $buildDir/test.elf $buildDir/test.o $buildDir/avr_spi.o $buildDir/avr_usart.o $buildDir/prints.o
 status=$?
 sleep $t
 if [ $status -gt 0 ]
@@ -104,7 +90,6 @@ then
 else
     echo -e "Linking successful. Output in test.elf"
 fi
-
 
 echo -e "\n\r>> GENERATE INTEL HEX File: "${IHex[@]}" "$buildDir"/test.elf "$buildDir"/test.hex"
 "${IHex[@]}" $buildDir/test.elf $buildDir/test.hex
@@ -118,8 +103,6 @@ then
 else
     echo -e "HEX file successfully generated. Output in test.hex"
 fi
-
-
 
 echo -e "\n\r>> DOWNLOAD HEX FILE TO AVR"
 echo "avrdude -p atmega1280 -c dragon_jtag -U flash:w:test.hex:i -P usb"
