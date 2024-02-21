@@ -1,12 +1,13 @@
 /*
  * File       : AVR_SPI.H
  * Version    : 1.0 
- * Target     : Default - ATMega1280
+ * Target     : ATMega1280
  * License    : GNU GPLv3
  * Author     : Joshua Fain
- * Copyright (c) 2020 - 2023
+ * Copyright (c) 2020 - 2024
  * 
- * Description: Interface for setting and controlling the targe device's SPI.
+ * Description: Interface for setting and controlling the target AVR device's 
+ *              SPI port.
  */
 
 #ifndef SPI_H
@@ -46,12 +47,12 @@
  * ----------------------------------------------------------------------------
  *                                         INITIALIZE SPI PORT INTO MASTER MODE
  * 
- * Description : Initialize the AVR's SPI port into master mode.
+ * Description : Initialize the target's SPI port into master mode.
  * 
  * Note        : If an application is using a different pin for Chip Select
  *               other than the SS pin of the AVR'S SPI port, then that
  *               application must define it and set the data direction to
- *               output. It should also ensure the pin is deasserted prior to
+ *               output. It should also ensure the pin is de-asserted prior to
  *               calling this function so the device's SPI port will not be
  *               active at the moment it is enabled on the AVR.
  * ----------------------------------------------------------------------------

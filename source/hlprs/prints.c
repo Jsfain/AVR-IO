@@ -19,7 +19,7 @@
 
 #include <stdint.h>
 #include "prints.h"
-#include "avr_usart.h"
+#include "avr_usart.h" // included here for transmit function
 
 /*
  ******************************************************************************
