@@ -1,6 +1,6 @@
 /*
  * File       : AVR_SPI.C
- * Version    : 1.0 
+ * Version    : 1.0
  * Target     : ATMega1280
  * License    : GNU GPLv3
  * Author     : Joshua Fain
