@@ -10,8 +10,8 @@
  *              SPI port.
  */
 
-#ifndef SPI_H
-#define SPI_H
+#ifndef AVR_SPI_H
+#define AVR_SPI_H
 
 #include <avr/io.h>
 
@@ -35,6 +35,12 @@
 #define MOSI        PB2
 #define MISO        PB3
 
+// Common SPI operations. 
+#define SS_LO        SPI_PORT  = SPI_PORT & ~(1 << SS)  // set SS pin low
+#define SS_HI        SPI_PORT |= 1 << SS                // set SS pin high
+#define SS_DD_OUT    DDR_SPI  |= 1 << DD_SS             // set SS pin as output
+
+// Bit length of SPI data register
 #define SPI_REG_BIT_LEN      8
 
 /*
@@ -81,4 +87,4 @@ uint8_t spi_MasterReceive(void);
  */
 void spi_MasterTransmit(uint8_t byte);
 
-#endif  //SPI_H
+#endif  //AVR_SPI_H
