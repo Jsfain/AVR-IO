@@ -2,12 +2,11 @@
  * File       : AVR_USART.C
  * Version    : 1.0 
  * Target     : ATMega1280
- * License    : GNU GPLv3
- * Author     : Joshua Fain
- * Copyright (c) 2020 - 2023
+ * Author     : Joshua Fain 2020-2023
  * 
- * Description:  Implements AVR_USART.H for accessing and controlling the USART
- *               on an AVR microcontroller.
+ * Implements AVR_USART.H for accessing and controlling the USART on the target
+ * AVR device. The implementation of the functions are directly based on those 
+ * provided in the AVR device manual. 
  */
 
 #include <avr/io.h>
